@@ -27,15 +27,7 @@ jobs:
           path: arbor
           submodules: true
 
-      - name: Cache venv
-        id: cache-venv
-        uses: actions/cache@v2
-        with:
-          path: venv
-          key: ${{ runner.os }}-${{ matrix.python-version }}-venv
-
       - name: Install
-        if: steps.cache-venv.outputs.cache-hit != 'true'
         run: |
           python3 -mvenv venv
           source venv/bin/activate
